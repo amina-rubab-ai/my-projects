@@ -63,7 +63,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const keywords = ['Al Aqsa Mosque', 'Dome of the Rock', 'Jerusalem Old City', 'Masjid al-Aqsa aerial'];\n\nasync function searchPexels(query) {\n  try {\n    const response = await this.helpers.httpRequest({\n      method: 'GET',\n      url: `https://api.pexels.com/videos/search?query=${encodeURIComponent(query)}&per_page=1`,\n      headers: {\n        'Authorization': 'MUWFPcCJkFX0SqfSLSjYtZDx8fKmcY7hxtlUzhF4bR8tZRBrfCHQmkUo'\n      },\n      json: true\n    });\n    return response.videos && response.videos[0] ? response.videos[0] : null;\n  } catch (e) {console.log('PEXELS ERROR:', e.message);\n   return { error: e.message };\n  }\n}\n\nconst results = [];\nfor (const keyword of keywords) {\n  const video = await searchPexels(keyword);\n  results.push({ keyword, video });\n}\n\nreturn [{ json: { results } }];"
+        "jsCode": "const keywords = ['Al Aqsa Mosque', 'Dome of the Rock', 'Jerusalem Old City', 'Masjid al-Aqsa aerial'];\n\nasync function searchPexels(query) {\n  try {\n    const response = await this.helpers.httpRequest({\n      method: 'GET',\n      url: `https://api.pexels.com/videos/search?query=${encodeURIComponent(query)}&per_page=1`,\n      headers: {\n        'Authorization': 'your-api-key'\n      },\n      json: true\n    });\n    return response.videos && response.videos[0] ? response.videos[0] : null;\n  } catch (e) {console.log('PEXELS ERROR:', e.message);\n   return { error: e.message };\n  }\n}\n\nconst results = [];\nfor (const keyword of keywords) {\n  const video = await searchPexels(keyword);\n  results.push({ keyword, video });\n}\n\nreturn [{ json: { results } }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
